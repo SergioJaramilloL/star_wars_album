@@ -4,12 +4,12 @@ function Header() {
   return(
     <>
       <header>
-          <a>
+          <div>
             <img
               src = "https://res.cloudinary.com/dpklpjhm2/image/upload/v1614631826/logo_starWars_gak9wf.png"        
               alt = "Logo Star Wars"
               />
-          </a>
+          </div>
           <nav>
             <ul>
               <li
