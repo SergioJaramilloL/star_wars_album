@@ -17,7 +17,7 @@ function Header() {
               ><a href ="/">Álbum</a></li>
               <li 
                 title = "Aquí abres un sobre de laminas"
-              ><a href ="/">Sobres</a></li>
+              ><a href ="/envelopes">Sobres</a></li>
             </ul>
           </nav> 
       </header>

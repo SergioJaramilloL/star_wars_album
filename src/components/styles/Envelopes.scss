@@ -7,23 +7,49 @@ div{
   &.container{
 
     div{
-      &.container__Album{
-        display: grid;
-        height: 100vh;
+      &.container__content{
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
         padding: 0 30px;
 
         div{
-          &.container__Album--category{
+          &.container__content--envelopes{
+            display: flex;
+            justify-content: center;
             border-top: 2px solid $secundaryColor;
             padding: 10px 20px;
 
-            h4{
-              &.category__title{
+            button{
+              &.envelopes__button{
+                cursor: pointer;
                 display: flex;
-                color: $primaryColor;
-                -webkit-text-stroke: 1px $secundaryColor;
+                justify-content: center;
+                align-items: center;
+                background-color: rgba(151, 139, 29, 0);
+                color: $secundaryColor;
+                font-size: 10em;
+                height: 126px;
+                width: 168px;
+                border: none;
+                border-radius: 20px;
+                margin: 20px;
+                transition: all 0.3s ease 0s;
+
+                &:hover{
+                  position: relative;
+                  transform: scale(1.05);
+                  box-shadow: 0 0 10px $secundaryColor;
+                }
               }
             }
+          }
+
+          &.container__content--sheets{
+            display: flex;
+            justify-content: center;
+            border-top: 2px solid $secundaryColor;
+            padding: 10px 20px;
 
             div{
               &.category__card{
@@ -53,8 +79,6 @@ div{
                 }
               }
             }
-
-
           }
         }
       }
