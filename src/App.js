@@ -8,6 +8,7 @@ import {
 from 'react-router-dom';
 
 import Header from './components/Header';
+import Album from './pages/Album';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Router>
         <Header></Header>
         <Switch>
+          <Route exact path="/" component={Album}/>
         </Switch>
       </Router>
     </div>

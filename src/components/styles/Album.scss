@@ -1,0 +1,63 @@
+$primaryColor: black;
+$secundaryColor: #FFE81F;
+$primaryBorder: 3px solid $secundaryColor;
+$primaryFontSize: 1.5em;
+
+div{
+  &.container{
+
+    div{
+      &.container__Album{
+        display: grid;
+        height: 100vh;
+        padding: 0 30px;
+
+        div{
+          &.container__Album--category{
+            border-top: 2px solid $secundaryColor;
+            padding: 10px 20px;
+
+            h4{
+              &.category__title{
+                display: flex;
+                color: $primaryColor;
+                -webkit-text-stroke: 1px $secundaryColor;
+              }
+            }
+
+            div{
+              &.category__card{
+                padding: 10px;
+                overflow: auto;
+
+              div{
+                &.category__card--item{
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  color: $primaryColor;
+                  background-color: rgba(255, 232, 31, 0.3);
+                  -webkit-text-stroke: 1px $secundaryColor;
+                  width: 170px;
+                  height: 200px;
+                  border: 2px solid $secundaryColor;
+                  border-radius: 10px;
+                  transition: all 0.3s ease 0s;
+
+                  &:hover{
+                    position: relative;
+                    transform: scale(1.05);
+                    box-shadow: 0 0 5px $secundaryColor;
+                  }
+                }
+              }
+              }
+            }
+
+
+          }
+        }
+      }
+    }
+  }
+}
