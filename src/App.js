@@ -9,6 +9,7 @@ from 'react-router-dom';
 
 import Header from './components/Header';
 import Album from './pages/Album';
+import Envelopes from './pages/Envelopes';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header></Header>
         <Switch>
           <Route exact path="/" component={Album}/>
+          <Route exact path="/envelopes" component={Envelopes}/>
         </Switch>
       </Router>
     </div>
