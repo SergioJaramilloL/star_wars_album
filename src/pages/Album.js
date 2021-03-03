@@ -3,7 +3,6 @@ import Title from '../components/Title';
 import { useSelector } from 'react-redux';
 
 function Album() {
-
   const data = useSelector(
     ({ albumReducer: { ...state } }) => {
       return { ...state }
