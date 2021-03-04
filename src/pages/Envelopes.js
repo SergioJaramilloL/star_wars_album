@@ -4,15 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Title from '../components/Title';
 import GetSheetsButton from '../components/GetEnvelopesButton';
 import Sheet from '../components/Sheet';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-  addFilms,
-  addPeople, 
-  addStarships,
   addEnvelopes,
   openEnvelopeAction
 } from '../store/actions/Envelopes.action';
+import { updateAlbum } from '../store/actions/Album.action';
 import { openEnvelope } from '../components/utils/openEnvelope';
 
 function Envelopes() {
@@ -23,12 +20,6 @@ function Envelopes() {
     });
   const sendData = data;
     
-  useEffect(() => {
-    dispatch(addFilms());
-    dispatch(addPeople());
-    dispatch(addStarships());
-  }, [dispatch]);
-
   if( data.envelopes.length < 1 ){
     return (
       <GetSheetsButton
@@ -47,6 +38,11 @@ function Envelopes() {
     event.preventDefault();
     const sheets = openEnvelope(sendData);
     dispatch(openEnvelopeAction({sheets, index}));
+  }
+
+  function onAddToAlbum (event, sheet) {
+    event.preventDefault();
+    dispatch(updateAlbum(sheet));
   }
 
   console.log('Porfin lo hice', data);
@@ -80,14 +76,24 @@ function Envelopes() {
                   key={index}
                   className="sheets__item"
                 >
-                  <Sheet
+                  { sheet.type !== 'films' ? (
+                    <Sheet
                     type = {sheet.type}
-                    name = {'nombre'}
+                    name = {sheet.sheet.name}
                     category = {sheet.category}
                     number = {sheet.number}
-                  />
+                    />
+                  ) : (
+                    <Sheet
+                    type = {sheet.type}
+                    name = {sheet.sheet.title}
+                    category = {sheet.category}
+                    number = {sheet.number}
+                    />
+                  )}
                   <button
                     className="sheets__item--button"
+                    onClick = {event => onAddToAlbum(event, sheet)}
                   >Agregar al album</button>
                 </div>
                 )

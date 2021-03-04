@@ -1,4 +1,5 @@
 import './styles/Header.scss';
+import { Link } from 'react-router-dom';
 
 function Header() {
   return(
@@ -14,10 +15,10 @@ function Header() {
             <ul>
               <li
                 title = "Aquí ves como va tu álbum"
-              ><a href ="/">Álbum</a></li>
+              ><Link to="/">Álbum</Link></li>
               <li 
                 title = "Aquí abres un sobre de laminas"
-              ><a href ="/envelopes">Sobres</a></li>
+              ><Link to="/envelopes">Sobres</Link></li>
             </ul>
           </nav> 
       </header>

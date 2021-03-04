@@ -9,7 +9,7 @@ if ( random >= 5 ){
   envelope.push({ 
     sheet: data.films[numSheet - 1],
     number: numSheet,
-    type: 'Pelicula',
+    type: 'films',
     category: 'Especial'
   });
 
@@ -18,7 +18,7 @@ if ( random >= 5 ){
     envelope.push({
       sheet: data.people[numSheet - 1],
       number: numSheet,
-      type: 'Personaje',
+      type: 'people',
       category: categorySheet('people', numSheet)
     });
   };
@@ -27,7 +27,7 @@ if ( random >= 5 ){
   envelope.push({ 
     sheet: data.starships[numSheet - 1],
     number: numSheet,
-    type: 'Nave espacial',
+    type: 'starships',
     category: categorySheet('starship', numSheet)
   });
 } else {
@@ -36,17 +36,17 @@ if ( random >= 5 ){
     envelope.push({
       sheet: data.people[numSheet - 1],
       number: numSheet,
-      type: 'Personaje',
+      type: 'people',
       category: categorySheet('people', numSheet)
     });
   };
 
   for( let i=0; i<2; i++) {
-    numSheet = Math.floor(Math.random() * (82 - 1)) + 1;
+    numSheet = Math.floor(Math.random() * (36 - 1)) + 1;
     envelope.push({
       sheet: data.starships[numSheet - 1],
       number: numSheet,
-      type: 'Nave espacial',
+      type: 'starships',
       category: categorySheet('starship', numSheet)
     });
   };

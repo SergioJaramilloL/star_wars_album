@@ -1,4 +1,4 @@
-export const SHEETS_ALBUM = 'SHEETS_ALBUM';
+export const UPDATE_ALBUM = 'UPDATE_ALBUM';
 
 export const initialState = {
   sheetsAlbum: {
@@ -8,12 +8,18 @@ export const initialState = {
   }
  }
  
+ function changeItemToAlbum( stateSheets, sheet ){
+   stateSheets[sheet.type].splice(sheet.number-1, 1, sheet.sheet);
+   const newArray = stateSheets[sheet.type];
+   return{ ...stateSheets, newArray }
+ }
+
  export function albumReducer (state = initialState, action) {
    switch (action.type){
-     case SHEETS_ALBUM:
+     case UPDATE_ALBUM:
        return {
          ...state,
-         sheetsAlbum: action.payload
+         sheetsAlbum: changeItemToAlbum(state.sheetsAlbum, action.payload)
        }
      default:
        return state
