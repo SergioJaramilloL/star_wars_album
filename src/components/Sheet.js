@@ -7,6 +7,7 @@ function Sheet({
   number
 }) {
   return(
+    <>
     <div className="containerSheet">
       <div
         className="containerSheet__main"
@@ -14,7 +15,7 @@ function Sheet({
         <label
           className="containerSheet__main--type"
         >{type}</label>
-        <h3>{name} de {type}</h3>
+        <h3>{name}</h3>
       </div>
       <label
         className="containerSheet__main--category"
@@ -23,6 +24,7 @@ function Sheet({
         className="containerSheet--number"
       >{number}</label>
     </div>
+    </>
   )
 }
 
