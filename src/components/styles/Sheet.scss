@@ -1,0 +1,33 @@
+$primaryColor: black;
+$secundaryColor: #FFE81F;
+$tertiaryColor: #085ea5;
+$primaryBorder: 3px solid $secundaryColor;
+$primaryFontSize: 1.5em;
+
+div{
+  &.containerSheet{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: $primaryColor;
+    background-color: rgba(8, 94, 165, 0.8);
+    max-width: 170px;
+    min-width: 170px;
+    height: 200px;
+    border: 2px solid $tertiaryColor;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: all 0.3s ease 0s;
+    padding: 10px;
+
+    &:hover{
+      position: relative;
+      transform: scale(1.05);
+      background-color: $tertiaryColor;
+      box-shadow: 0 0 50px $tertiaryColor;
+    }
+
+    
+  }
+}
