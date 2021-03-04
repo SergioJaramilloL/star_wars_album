@@ -80,21 +80,12 @@ function Envelopes() {
                   key={index}
                   className="sheets__item"
                 >
-                  { sheet.type === 'Pelicula' ? (
-                    <Sheet
-                      type = {sheet.type}
-                      name = {sheet.sheet.title}
-                      category = {sheet.category}
-                      number = {sheet.number}
-                    />
-                  ) : (
-                    <Sheet
+                  <Sheet
                     type = {sheet.type}
-                    name = {sheet.sheet.name}
+                    name = {'nombre'}
                     category = {sheet.category}
                     number = {sheet.number}
                   />
-                  )}
                   <button
                     className="sheets__item--button"
                   >Agregar al album</button>
