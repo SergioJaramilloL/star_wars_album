@@ -1,0 +1,24 @@
+$primaryColor: black;
+$secundaryColor: #FFE81F;
+$tertiaryColor: #085ea5;
+$primaryBorder: 3px solid $secundaryColor;
+$primaryFontSize: 1.5em;
+
+button{
+  &.getEnvelopes{
+    cursor: pointer;
+    margin: 50vh;
+    transition: all 0.3s ease 0s;
+    border: 4px solid $tertiaryColor;
+    font-family: 'Krona One', sans-serif;
+    font-size: 20px;
+    background-color: rgba(8, 94, 165, 0.4);
+  
+    &:hover{
+      position: relative;
+      transform: scale(1.4);
+      box-shadow: 0 0 50px $tertiaryColor;
+      background-color: $tertiaryColor;
+    }
+  }
+}

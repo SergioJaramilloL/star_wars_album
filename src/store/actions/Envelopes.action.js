@@ -1,47 +1,68 @@
 import axios from 'axios';
 import {
-  SHEETS,
+  FILMS_SHEETS,
+  PEOPLE_SHEETS,
+  STARSHIPS_SHEETS,
+  ENVELOPE_SHEETS,
   FAILURE_SHEETS,
-  INDEX_SHEETS,
-  TYPE_SHEETS
+  ADD_SHEETS
 } from '../reducers/Envelopes.reducer';
 
 export function addFilms() {
-  const rand = Math.floor(Math.random() * (6 - 1)) + 1;
   return async function (dispatch){
     try{
-      const { data } = await axios.get(`https://swapi.dev/api/films/${rand}/`);
-      dispatch({ type: SHEETS, payload: data });
-      dispatch({ type: INDEX_SHEETS, payload: rand });
-      dispatch({ type: TYPE_SHEETS, payload: 'films' });
+      const { data } = await axios.get(`https://swapi.dev/api/films/`);
+      dispatch({ type: FILMS_SHEETS, payload: data.results });
     } catch (error) {
       dispatch({ type:FAILURE_SHEETS, payload: error });
     } 
   }
 }
+
 export function addPeople() {
-  const rand = Math.floor(Math.random() * (82 - 1)) + 1;
   return async function (dispatch){
-    try{
-      const { data } = await axios.get(`https://swapi.dev/api/people/${rand}/`);
-      dispatch({ type: SHEETS, payload: data });
-      dispatch({ type: INDEX_SHEETS, payload: rand });
-      dispatch({ type: TYPE_SHEETS, payload: 'people' });
-    } catch (error) {
-      dispatch({ type:FAILURE_SHEETS, payload: error });
-    } 
+    const prevSheets = [];
+    for( let i=1; i<=9; i++) {
+      try{
+        const { data } = await axios.get(`https://swapi.dev/api/people/?page=${i}`);
+        prevSheets.push(data.results);
+      } catch (error) {
+        dispatch({ type:FAILURE_SHEETS, payload: error });
+      } 
+    }
+    const sheets = prevSheets.reduce(function(memo, elem){
+      return memo.concat(elem);
+    }, []);
+    dispatch({ type: PEOPLE_SHEETS, payload: sheets });
   }
 }
+
 export function addStarships() {
-  const rand = Math.floor(Math.random() * (32 - 1)) + 1;
   return async function (dispatch){
-    try{
-      const { data } = await axios.get(`https://swapi.dev/api/planets/${rand}/`);
-      dispatch({ type: SHEETS, payload: data });
-      dispatch({ type: INDEX_SHEETS, payload: rand });
-      dispatch({ type: TYPE_SHEETS, payload: 'starships' });
-    } catch (error) {
-      dispatch({ type:FAILURE_SHEETS, payload: error });
+    const prevSheets = [];
+    for( let i=1; i<=4; i++){
+      try{
+        const { data } = await axios.get(`https://swapi.dev/api/starships/?page=${i}`);
+        prevSheets.push(data.results);
+      } catch (error) {
+        dispatch({ type:FAILURE_SHEETS, payload: error });
+      }
     } 
+    const sheets = prevSheets.reduce(function(memo, elem){
+      return memo.concat(elem);
+    }, []);
+    dispatch({ type: STARSHIPS_SHEETS, payload: sheets });
+  }
+}
+
+export function addEnvelopes(arrEnvelopes) {
+  return function (dispatch){
+    dispatch({ type:ENVELOPE_SHEETS, payload: arrEnvelopes });
+  }
+}
+
+export function openEnvelopeAction(currentEnvelope){
+  return function (dispatch){
+    dispatch({ type:ADD_SHEETS, payload: currentEnvelope });
   }
 }
